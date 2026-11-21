@@ -1,0 +1,132 @@
+# Declarative guardrail policies for the Nordlicht Digital HR & career-coaching assistant.
+# Every rule MUST define: trigger, action, rationale.
+# Actions: REDACT | REDIRECT | REFUSE | ADD_DISCLAIMER | ESCALATE_TO_HUMAN
+# Trigger types: regex | keywords | guard_category | always
+version: 1
+rules:
+  - id: pii_iban
+    stages: [input, output]
+    trigger:
+      type: regex
+      patterns: ['\b[A-Z]{2}\d{2}(?:\s?[0-9A-Z]{4}){4}\s?[0-9A-Z]{0,2}\b']
+    action: REDACT
+    params: {replacement: "[IBAN_REDACTED]"}
+    rationale: "GDPR Art. 5(1)(c) data minimisation: bank details are never needed for HR policy questions and must not reach the model or logs."
+
+  - id: pii_tax_id
+    stages: [input, output]
+    trigger:
+      type: regex
+      patterns: ['(?i)(steuer-?id|steueridentifikationsnummer|tax id)\D{0,12}\d{2}\s?\d{3}\s?\d{3}\s?\d{3}', '\b\d{2}\s\d{3}\s\d{3}\s\d{3}\b']
+    action: REDACT
+    params: {replacement: "[TAX_ID_REDACTED]"}
+    rationale: "The German tax identification number is a unique personal identifier (section 139b AO); processing it in a chatbot has no legal basis."
+
+  - id: pii_phone
+    stages: [input, output]
+    trigger:
+      type: regex
+      patterns: ['(?<!\d)(?:\+49|0049|0)\s?1[5-7]\d[\s/-]?\d{3,4}[\s-]?\d{3,5}(?!\d)']
+    action: REDACT
+    params: {replacement: "[PHONE_REDACTED]"}
+    rationale: "Private mobile numbers are personal data (GDPR Art. 4(1)); redaction protects third parties mentioned in questions."
+
+  - id: pii_private_email
+    stages: [output]
+    trigger:
+      type: regex
+      patterns: ['\b[A-Za-z0-9._%+-]+@(?!nordlicht-digital\.example)[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b']
+    action: REDACT
+    params: {replacement: "[EMAIL_REDACTED]"}
+    rationale: "Only official company contact addresses may be disclosed; any other e-mail in model output is treated as leaked personal data."
+
+  - id: discriminatory_screening
+    stages: [input]
+    trigger:
+      type: regex
+      patterns:
+        - '(?i)(exclude|filter|reject|screen out|sort out|aussortieren|ablehnen|don.?t (hire|invite)|avoid hiring|rank\w* (lower|down)|downgrade)\b.{0,70}\b(over \d{2}|older|age[ds]?|women|female|mothers?|pregnan\w*|foreign\w*|immigrant\w*|migrant\w*|headscarf|kopftuch|muslim\w*|religio\w*|disab\w*|behindert\w*|turkish|arab\w*|non-german|ausländ\w*|gay|lesbian|trans\w*|schwanger\w*|names? that sound)'
+        - '(?i)only (hire|invite|shortlist|consider)\b.{0,30}\b(men|males|young|germans|native germans|christians|under \d{2})'
+    action: REFUSE
+    params: {message: "I can't help with screening criteria based on protected characteristics. Under the German General Equal Treatment Act (AGG) candidates must be assessed on job-relevant qualifications only. I can help you define objective, skills-based criteria instead."}
+    rationale: "AGG sections 1, 7 and 11 prohibit discrimination in recruiting; EU AI Act Annex III(4)(a) classifies AI used for filtering applications as high-risk."
+
+  - id: protected_attribute_probing
+    stages: [input]
+    trigger:
+      type: regex
+      patterns: ['(?i)(how (can|do) i|ways to|help me) (find out|check|tell|figure out|ask)\b.{0,40}\b(pregnan\w*|schwanger\w*|religio\w*|sexual orientation|disab\w*|health|family planning|kinderwunsch)']
+    action: REFUSE
+    params: {message: "Questions about pregnancy, religion, health, disability or family planning are not permitted in German recruiting (AGG, GDPR Art. 9). I can suggest lawful, job-related interview questions instead."}
+    rationale: "Special-category data (GDPR Art. 9) and AGG-protected attributes may not be elicited from candidates; answering would enable unlawful discrimination."
+
+  - id: legal_advice_redirect
+    stages: [input]
+    trigger:
+      type: regex
+      patterns: ['(?i)(should i (sue|go to court)|will i win|chances (of|to) win|draft (a|my) (lawsuit|claim)|kündigungsschutzklage (gewinnen|einreichen)|is my (termination|dismissal|kündigung) (legal|valid|wirksam)|how much (severance|abfindung) (can|will) i (get|demand))']
+    action: REDIRECT
+    params: {message: "I can explain the company policy, but I can't assess your individual legal case. Please contact the works council (Betriebsrat), a specialist employment lawyer (Fachanwalt für Arbeitsrecht) or your trade union. Note: a claim against a termination must be filed with the labour court within 3 weeks (section 4 KSchG)."}
+    rationale: "Individual legal assessment is reserved to lawyers (Rechtsdienstleistungsgesetz); the deadline hint prevents users from losing rights while being redirected."
+
+  - id: crisis_self_harm
+    stages: [input]
+    trigger:
+      type: regex
+      patterns: ['(?i)(suicid\w*|kill myself|end my life|don.?t want to live|nicht mehr leben|mich umbringen|self-?harm|ritzen|no reason to live)']
+    action: ESCALATE_TO_HUMAN
+    params: {message: "I'm really sorry you're feeling this way. You don't have to handle this alone. In Germany you can reach the TelefonSeelsorge 24/7 free of charge at 0800 111 0 111 or 0800 111 0 222; in an emergency call 112. I have also asked a human HR wellbeing advisor to contact you confidentially."}
+    rationale: "Crisis situations require immediate human support; automated coaching must never be the only response (EU AI Act Art. 14 human oversight)."
+
+  - id: harassment_report
+    stages: [input]
+    trigger:
+      type: regex
+      patterns: ['(?i)(sexual(ly)? harass\w*|harass(ed|ing|ment)|belästig\w*|mobbing|bullied|bullying|assaulted)']
+    action: ESCALATE_TO_HUMAN
+    params: {message: "Thank you for telling me. Harassment reports are handled confidentially by a trained human case manager at the AGG complaints office, who will contact you within 5 working days. You can also contact the Federal Anti-Discrimination Agency."}
+    rationale: "Company policy and AGG section 13 require complaints to be handled by the complaints office; harassment cases are never decided by an automated system."
+
+  - id: consequential_hr_decision
+    stages: [input]
+    trigger:
+      type: regex
+      patterns: ['(?i)(decide|tell me) (whether|if) (to|i should|we should) (fire|terminate|dismiss|reject|hire)\b', '(?i)(automatically|auto-?) ?(reject|decline|fire)\b']
+    action: ESCALATE_TO_HUMAN
+    params: {message: "Hiring, rejection and termination decisions must be taken by an accountable human. I've routed this to an HR business partner; I can prepare an objective, criteria-based summary for them."}
+    rationale: "GDPR Art. 22 forbids solely automated decisions with legal effect; EU AI Act Art. 14 and Art. 26 require effective human oversight for high-risk employment AI."
+
+  - id: guard_block_injection
+    stages: [input]
+    trigger:
+      type: guard_category
+      categories: [S6, S8]
+    action: REFUSE
+    params: {message: "I can't follow that request. I can help with questions about our HR policies, your CV or interview preparation."}
+    rationale: "Prompt-injection and system-prompt extraction attempts threaten confidentiality and integrity (EU AI Act Art. 15(5) cybersecurity)."
+
+  - id: guard_block_harm
+    stages: [input, output]
+    trigger:
+      type: guard_category
+      categories: [S1, S2, S3, S4]
+    action: REFUSE
+    params: {message: "I can't help with that. If you have a question about HR policies, applications or your career, I'm happy to help."}
+    rationale: "Violence, fraud (e.g. forged references), discrimination and privacy violations are outside the intended purpose and create legal liability."
+
+  - id: employment_law_disclaimer
+    stages: [output]
+    trigger:
+      type: keywords
+      patterns: [notice period, kündigung, termination, salary, gehalt, severance, labour court, contract, parental leave, elternzeit, probation, probezeit]
+    action: ADD_DISCLAIMER
+    params: {message: "Note: This is general information based on company policy, not legal advice. Your employment contract and applicable collective agreements take precedence."}
+    rationale: "Transparency about the limits of the system (EU AI Act Art. 13) and avoidance of unauthorised legal advice."
+
+  - id: ai_interaction_disclosure
+    stages: [output]
+    trigger:
+      type: always
+    action: ADD_DISCLAIMER
+    params: {message: "You are interacting with an AI system. Important decisions are always reviewed by a human."}
+    rationale: "EU AI Act Art. 50(1): persons must be informed that they are interacting with an AI system."

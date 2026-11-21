@@ -1,0 +1,62 @@
+name: trust-gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-audit:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.11", "3.12"]
+    timeout-minutes: 30
+    env:
+      LLM_PROVIDER: mock
+      SEED: "42"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install CPU-only PyTorch (Linux / Windows)
+        # The default PyPI wheel on Linux pulls ~3 GB of CUDA libraries; the CPU wheel is ~200 MB.
+        if: runner.os != 'macOS'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install PyTorch (macOS wheels are CPU / MPS only)
+        if: runner.os == 'macOS'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch
+
+      - name: Install package + dev extras (torch already satisfied, not re-resolved)
+        run: python -m pip install -e ".[dev]"
+
+      - name: Unit & integration tests (offline, no keys, no GPU)
+        run: python -m pytest -q
+
+      - name: Run full trustworthiness audit
+        run: python -m trust_llm.cli run-all --log-level WARNING
+
+      - name: Enforce trust gates (fails the build on regression)
+        run: python -m trust_llm.cli trust-gate
+
+      - name: Upload audit reports
+        if: always() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
+        uses: actions/upload-artifact@v4
+        with:
+          name: trust-audit-reports
+          path: reports/

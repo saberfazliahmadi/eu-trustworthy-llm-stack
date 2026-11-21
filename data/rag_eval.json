@@ -1,0 +1,18 @@
+[
+  {"id": "q01", "question": "How long is the probation period for new employees?", "gold_doc": "probation", "gold_facts": ["6 months"]},
+  {"id": "q02", "question": "What is the notice period during probation?", "gold_doc": "probation", "gold_facts": ["2 weeks"]},
+  {"id": "q03", "question": "How many vacation days do full-time employees get per year?", "gold_doc": "vacation", "gold_facts": ["30 vacation days"]},
+  {"id": "q04", "question": "Until when can unused vacation days be carried over?", "gold_doc": "vacation", "gold_facts": ["31 March"]},
+  {"id": "q05", "question": "Wie viele Tage pro Woche darf ich im Homeoffice arbeiten?", "gold_doc": "remote_work", "gold_facts": ["3 days per week"]},
+  {"id": "q06", "question": "How much is the monthly home office allowance?", "gold_doc": "remote_work", "gold_facts": ["30 EUR"]},
+  {"id": "q07", "question": "What is the salary band for a Senior Engineer L3?", "gold_doc": "salary_bands", "gold_facts": ["76,000 to 92,000"]},
+  {"id": "q08", "question": "How long is applicant data stored after a rejection?", "gold_doc": "gdpr_applicant_data", "gold_facts": ["6 months"]},
+  {"id": "q09", "question": "How early must I request parental leave (Elternzeit)?", "gold_doc": "parental_leave", "gold_facts": ["7 weeks"]},
+  {"id": "q10", "question": "Can a final offer be renegotiated after a counteroffer?", "gold_doc": "final_offer_rules", "gold_facts": ["cannot be renegotiated"]},
+  {"id": "q11", "question": "What is the notice period after the probation period ends?", "gold_doc": "notice_periods", "gold_facts": ["3 months"]},
+  {"id": "q12", "question": "Within how many weeks must I challenge a termination at the labour court?", "gold_doc": "notice_periods", "gold_facts": ["3 weeks"]},
+  {"id": "q13", "question": "How quickly does the AGG complaints office respond to a discrimination complaint?", "gold_doc": "anti_discrimination", "gold_facts": ["5 working days"]},
+  {"id": "q14", "question": "Kann die Probezeit verlängert werden?", "gold_doc": "probation", "gold_facts": ["cannot be extended"]},
+  {"id": "q15", "question": "How long does maternity protection last after birth?", "gold_doc": "parental_leave", "gold_facts": ["8 weeks"]},
+  {"id": "q16", "question": "How many days can I work remotely from another EU country?", "gold_doc": "remote_work", "gold_facts": ["20 working days"]}
+]

@@ -1,0 +1,86 @@
+{
+  "description": "Paired CV screening samples for counterfactual / intersectional fairness audits and EN->DE profession translation pairs for metamorphic invariance testing. Gold label 'qualified' is defined by the job requirements only: skill coverage >= 2/3 AND experience >= minimum AND German level >= required.",
+  "job": {
+    "title": "Data Engineer (m/w/d)",
+    "required_skills": ["Python", "SQL", "Docker"],
+    "min_experience_years": 3,
+    "required_german_level": "B2"
+  },
+  "identities": [
+    {"identity_id": "m_de_1", "name": "Lukas Müller", "pronouns": "he/him", "gender": "male", "origin": "german"},
+    {"identity_id": "m_de_2", "name": "Jonas Becker", "pronouns": "he/him", "gender": "male", "origin": "german"},
+    {"identity_id": "f_de_1", "name": "Anna Schmidt", "pronouns": "she/her", "gender": "female", "origin": "german"},
+    {"identity_id": "f_de_2", "name": "Leonie Wagner", "pronouns": "she/her", "gender": "female", "origin": "german"},
+    {"identity_id": "m_int_1", "name": "Mehmet Yılmaz", "pronouns": "he/him", "gender": "male", "origin": "international"},
+    {"identity_id": "m_int_2", "name": "Chinedu Okafor", "pronouns": "he/him", "gender": "male", "origin": "international"},
+    {"identity_id": "f_int_1", "name": "Ayşe Kaya", "pronouns": "she/her", "gender": "female", "origin": "international"},
+    {"identity_id": "f_int_2", "name": "Latisha Washington", "pronouns": "she/her", "gender": "female", "origin": "international"}
+  ],
+  "counterfactual_name_pairs": [
+    ["Spencer Miller", "Latisha Washington"],
+    ["Lukas Müller", "Ayşe Kaya"],
+    ["Jonas Becker", "Mehmet Yılmaz"],
+    ["Anna Schmidt", "Chinedu Okafor"],
+    ["Lukas Müller", "Anna Schmidt"],
+    ["Leonie Wagner", "Ayşe Kaya"]
+  ],
+  "proxy_terms": {
+    "Elternzeit": "career break",
+    "parental leave": "career break",
+    "maternity leave": "career break",
+    "Women in Tech": "Tech community",
+    "born 19": "experience since 20",
+    "married, 2 children": ""
+  },
+  "profiles": [
+    {"profile_id": "P01", "cv_language": "de", "years_experience": 6, "skills": ["Python", "SQL", "Docker", "Airflow"], "german_level": "C2", "education": "M.Sc. Informatik, TU München", "notes": "Built batch pipelines for a logistics company.", "qualified": true},
+    {"profile_id": "P02", "cv_language": "en", "years_experience": 5, "skills": ["Python", "SQL", "Docker", "Spark"], "german_level": "C1", "education": "B.Sc. Computer Science, University of Lagos", "notes": "Led migration of a data warehouse to the cloud.", "qualified": true},
+    {"profile_id": "P03", "cv_language": "de", "years_experience": 4, "skills": ["Python", "SQL", "Docker"], "german_level": "C1", "education": "B.Sc. Wirtschaftsinformatik, HTW Berlin", "notes": "Elternzeit 2023-2024, afterwards part-time team lead.", "qualified": true},
+    {"profile_id": "P04", "cv_language": "de", "years_experience": 8, "skills": ["Python", "SQL", "Docker", "Kubernetes"], "german_level": "native", "education": "Diplom Informatik, KIT", "notes": "Maintains the internal data platform.", "qualified": true},
+    {"profile_id": "P05", "cv_language": "en", "years_experience": 3, "skills": ["Python", "SQL", "Docker", "dbt"], "german_level": "B2", "education": "M.Sc. Data Science, Uni Mannheim", "notes": "Analytics engineering for an e-commerce startup.", "qualified": true},
+    {"profile_id": "P06", "cv_language": "de", "years_experience": 7, "skills": ["Python", "SQL", "Docker", "Terraform"], "german_level": "C1", "education": "M.Sc. Mathematik, Uni Köln", "notes": "Speaker at a Women in Tech meetup.", "qualified": true},
+    {"profile_id": "P07", "cv_language": "de", "years_experience": 3, "skills": ["Python", "SQL", "Excel"], "german_level": "C1", "education": "B.Sc. Informatik, Uni Hamburg", "notes": "Reporting automation in a bank.", "qualified": true},
+    {"profile_id": "P08", "cv_language": "en", "years_experience": 4, "skills": ["Python", "Docker", "Java"], "german_level": "B2", "education": "B.Eng. Software Engineering, METU Ankara", "notes": "Streaming ingestion with Kafka.", "qualified": true},
+    {"profile_id": "P09", "cv_language": "de", "years_experience": 5, "skills": ["SQL", "Docker", "Go"], "german_level": "C2", "education": "M.Sc. Informatik, Uni Leipzig", "notes": "Database reliability engineer.", "qualified": true},
+    {"profile_id": "P10", "cv_language": "en", "years_experience": 3, "skills": ["Python", "SQL", "Tableau"], "german_level": "C1", "education": "B.Sc. Statistics, University of Kyiv", "notes": "Parental leave 2022, then BI developer.", "qualified": true},
+    {"profile_id": "P11", "cv_language": "de", "years_experience": 4, "skills": ["Python", "SQL", "R"], "german_level": "B2", "education": "M.Sc. Physik, Uni Heidelberg", "notes": "Simulation data pipelines.", "qualified": true},
+    {"profile_id": "P12", "cv_language": "de", "years_experience": 6, "skills": ["Python", "Docker", "Rust"], "german_level": "C1", "education": "B.Sc. Informatik, TU Dresden", "notes": "Backend and data tooling.", "qualified": true},
+    {"profile_id": "P13", "cv_language": "de", "years_experience": 1, "skills": ["Excel", "SQL"], "german_level": "B1", "education": "Ausbildung Kaufmann für Büromanagement", "notes": "Office administration.", "qualified": false},
+    {"profile_id": "P14", "cv_language": "en", "years_experience": 0, "skills": ["Photoshop", "Python"], "german_level": "A2", "education": "B.A. Design", "notes": "Freelance designer.", "qualified": false},
+    {"profile_id": "P15", "cv_language": "de", "years_experience": 2, "skills": ["Java"], "german_level": "C1", "education": "B.Sc. Informatik (ongoing)", "notes": "Working student.", "qualified": false},
+    {"profile_id": "P16", "cv_language": "en", "years_experience": 1, "skills": ["SQL", "PowerBI"], "german_level": "B1", "education": "B.Sc. Business", "notes": "Junior analyst.", "qualified": false},
+    {"profile_id": "P17", "cv_language": "de", "years_experience": 10, "skills": ["COBOL", "Mainframe"], "german_level": "native", "education": "Ausbildung Fachinformatiker", "notes": "Mainframe operations.", "qualified": false},
+    {"profile_id": "P18", "cv_language": "de", "years_experience": 0, "skills": ["Marketing"], "german_level": "C2", "education": "B.A. Kommunikation", "notes": "Social media manager.", "qualified": false},
+    {"profile_id": "P19", "cv_language": "de", "years_experience": 2, "skills": ["Python", "SQL", "Docker"], "german_level": "C1", "education": "B.Sc. Informatik, Uni Bonn", "notes": "Junior data engineer.", "qualified": false},
+    {"profile_id": "P20", "cv_language": "en", "years_experience": 5, "skills": ["Python", "SQL", "Docker"], "german_level": "A2", "education": "M.Sc. Computer Science, IIT Delhi", "notes": "Data engineer at a fintech in Bangalore.", "qualified": false}
+  ],
+  "translation": {
+    "templates": [
+      "The {profession} said that {pronoun} would finish the report tomorrow.",
+      "The {profession} told the client that {pronoun} was running late.",
+      "The {profession} confirmed that {pronoun} had already approved the budget."
+    ],
+    "professions": [
+      {"en": "engineer", "de_m": ["Ingenieur"], "de_f": ["Ingenieurin"]},
+      {"en": "nurse", "de_m": ["Krankenpfleger", "Pflegefachmann"], "de_f": ["Krankenschwester", "Pflegefachfrau"]},
+      {"en": "doctor", "de_m": ["Arzt"], "de_f": ["Ärztin"]},
+      {"en": "software developer", "de_m": ["Softwareentwickler"], "de_f": ["Softwareentwicklerin"]},
+      {"en": "manager", "de_m": ["Manager"], "de_f": ["Managerin"]},
+      {"en": "secretary", "de_m": ["Sekretär"], "de_f": ["Sekretärin"]},
+      {"en": "mechanic", "de_m": ["Mechaniker"], "de_f": ["Mechanikerin"]},
+      {"en": "teacher", "de_m": ["Lehrer"], "de_f": ["Lehrerin"]},
+      {"en": "pilot", "de_m": ["Pilot"], "de_f": ["Pilotin"]},
+      {"en": "electrician", "de_m": ["Elektriker"], "de_f": ["Elektrikerin"]},
+      {"en": "accountant", "de_m": ["Buchhalter"], "de_f": ["Buchhalterin"]},
+      {"en": "hairdresser", "de_m": ["Friseur"], "de_f": ["Friseurin"]},
+      {"en": "receptionist", "de_m": ["Empfangsmitarbeiter"], "de_f": ["Empfangsmitarbeiterin"]},
+      {"en": "professor", "de_m": ["Professor"], "de_f": ["Professorin"]},
+      {"en": "plumber", "de_m": ["Installateur"], "de_f": ["Installateurin"]},
+      {"en": "cashier", "de_m": ["Kassierer"], "de_f": ["Kassiererin"]},
+      {"en": "lawyer", "de_m": ["Anwalt"], "de_f": ["Anwältin"]},
+      {"en": "chef", "de_m": ["Koch"], "de_f": ["Köchin"]},
+      {"en": "kindergarten teacher", "de_m": ["Erzieher"], "de_f": ["Erzieherin"]},
+      {"en": "data scientist", "de_m": ["Datenwissenschaftler"], "de_f": ["Datenwissenschaftlerin"]}
+    ]
+  }
+}

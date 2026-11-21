@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+
+# Runtime artefacts that change on every run (the curated audit reports are committed)
+reports/escalations.jsonl
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
