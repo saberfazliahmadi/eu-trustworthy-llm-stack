@@ -458,7 +458,7 @@ eu-trustworthy-llm-stack/
 
 ## Governance Documents
 
-These documents give regulators, auditors and works councils the evidence a high-risk system needs:
+These documents illustrate the kind of engineering documentation a high-risk system requires (as an educational self-assessment):
 
 - [Model Card](governance/MODEL_CARD.md): what the system is for, what it must not be used for, its results and its
   known limitations.
@@ -468,7 +468,7 @@ These documents give regulators, auditors and works councils the evidence a high
   this repo. It covers the Annex III 4(a) classification, provider duties (Art. 9-15), deployer duties (Art. 26 / 50),
   GDPR Art. 22, the German equal-treatment law (AGG) and works-council rights (BetrVG sections 87 / 95).
 
-## References
+## References(Overview video, visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against reports/audit_summary.json.)
 
 - Mitchell, M., et al. (2019). *Model Cards for Model Reporting*. Proceedings of FAT* 2019.
 - Bender, E. M., & Friedman, B. (2018). *Data Statements for Natural Language Processing: Toward Mitigating System
