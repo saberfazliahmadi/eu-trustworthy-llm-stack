@@ -19,20 +19,17 @@ about the assistant is backed by code you can run, an automated test, a written 
 
 New to the repo? Watch the short walkthrough or scan the two infographics and slide deck below before diving into the code and audit reports.
 
-
 https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
 
-https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
-
-- **Slide Deck (10 slides):** [Download / View `Engineering_Trustworthy_HR_AI.pdf`](docs/overview/Engineering_Trustworthy_HR_AI.pdf)
-- **Architecture Infographic:** [5-Layer Safety Stack & Policy Flow](docs/overview/Five-Layer_AI_Trust_Framework.png)
+- **Slide Deck (10 slides):** [Download / View `EU_Trustworthy_HR_AI_Stack.pdf`](docs/overview/EU_Trustworthy_HR_AI_Stack.pdf)
+- **Architecture Infographic:** [5-Layer Safety Stack & Automated Safety Gates](docs/overview/Automated_Safety_Gates_Diagram.png)
 - **Benchmark Scorecard:** [Before vs. After & Residual Risks](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
 
 <details>
 <summary><strong>Click to expand the Architecture & Benchmark Infographics inline</strong></summary>
 
-### 5-Layer Safety Stack & Grounded RAG Architecture
-![5-Layer AI Trust Framework](docs/overview/Five-Layer_AI_Trust_Framework.png)
+### 5-Layer Safety Stack & Automated Safety Gates
+![Automated Safety Gates Diagram](docs/overview/Automated_Safety_Gates_Diagram.png)
 
 ### Before vs. After Benchmark Scorecard & Honest Findings
 ![LLM Trust Stack Performance Analysis](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
