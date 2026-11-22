@@ -35,7 +35,7 @@ https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
 
 ---
 
-```
+```bash
 pip install -e ".[dev]"  &&  python -m pytest  &&  python -m trust_llm.cli run-all
 ```
 
