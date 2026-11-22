@@ -9,6 +9,9 @@ stack that makes it trustworthy: grounded RAG with fact verification, declarativ
 statistical LLM-as-a-judge evaluation, fairness auditing and debiasing, metamorphic robustness testing, adversarial red teaming,
 mechanistic interpretability labs, CI trust gates and EU AI Act governance artefacts.**
 
+Recruiting AI is explicitly *high-risk* under the EU AI Act (Annex III, point 4). This repository treats that literally:
+every claim about the assistant is backed by an executable audit, a test, a report and a figure.
+
 ## Quick Visual Overview
 
 New to the repo? Watch the short walkthrough or scan the two infographics and slide deck below before diving into the code and audit reports.
@@ -30,11 +33,7 @@ https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
 
 </details>
 
-
-
-
-Recruiting AI is explicitly *high-risk* under the EU AI Act (Annex III, point 4). This repository treats that literally:
-every claim about the assistant is backed by an executable audit, a test, a report and a figure.
+---
 
 ```
 pip install -e ".[dev]"  &&  python -m pytest  &&  python -m trust_llm.cli run-all
