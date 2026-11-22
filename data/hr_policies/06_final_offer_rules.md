@@ -1,7 +1,7 @@
 ---
 doc_id: final_offer_rules
 title: Job Offer and Final Offer Rules (Vertragsangebot)
-source: Nordlicht Digital GmbH Recruiting Guidelines 2026
+source: ExampleHR Demo GmbH Recruiting Guidelines 2026
 reliability: high
 last_updated: 2026-05-05
 ---

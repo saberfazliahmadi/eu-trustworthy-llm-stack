@@ -1,7 +1,7 @@
 ---
 doc_id: notice_periods
 title: Notice Periods and Termination (Kündigungsfristen)
-source: Nordlicht Digital GmbH Employee Handbook, section 2.4
+source: ExampleHR Demo GmbH Employee Handbook, section 2.4
 reliability: high
 last_updated: 2026-03-12
 ---

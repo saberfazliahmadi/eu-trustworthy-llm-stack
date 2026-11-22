@@ -7,17 +7,17 @@ Pipeline: (1) embed query, (2) cosine-similarity top-k retrieval over 10 HR poli
 | config | FActScore | gold-fact accuracy | hit@k | supported | intrinsic | extrinsic | hallucination rate |
 |---|---|---|---|---|---|---|---|
 | no_retrieval_baseline | 0.125 | 0.062 | - | 3 | 21 | 2 | 0.885 |
-| rag_k3 | 0.865 | 0.875 | 1.000 | 32 | 5 | 0 | 0.135 |
-| rag_k8_overload | 0.906 | 0.750 | 1.000 | 33 | 3 | 0 | 0.083 |
-| rag_k3_typo_queries | 0.979 | 0.812 | 0.812 | 30 | 1 | 0 | 0.032 |
-| rag_k3_reliable_sources | 0.865 | 0.875 | 1.000 | 32 | 5 | 0 | 0.135 |
+| rag_k3 | 0.875 | 0.875 | 1.000 | 34 | 5 | 0 | 0.128 |
+| rag_k8_overload | 0.885 | 0.750 | 1.000 | 34 | 4 | 0 | 0.105 |
+| rag_k3_typo_queries | 0.979 | 0.812 | 0.812 | 31 | 1 | 0 | 0.031 |
+| rag_k3_reliable_sources | 0.875 | 0.875 | 1.000 | 34 | 5 | 0 | 0.128 |
 
 ## RAG failure-mode diagnostics
 
 | config | retrieval_failure | evidence_misinterpretation | context_overload | source_reliability |
 |---|---|---|---|---|
 | rag_k3 | 0 | 4 | 0 | 2 |
-| rag_k8_overload | 0 | 3 | 4 | 3 |
+| rag_k8_overload | 0 | 4 | 4 | 3 |
 | rag_k3_typo_queries | 3 | 1 | 0 | 2 |
 | rag_k3_reliable_sources | 0 | 4 | 0 | 0 |
 
@@ -25,11 +25,11 @@ Pipeline: (1) embed query, (2) cosine-similarity top-k retrieval over 10 HR poli
 
 - `rag_k3` **q04** `evidence_misinterpretation` - Until when can unused vacation days be carried over? - contradicts retrieved evidence: ['Unused vacation days can be carried over to the next year and must be taken by 33 March', 'The company reminds employees in writing before vacation days expire']
 - `rag_k3` **q05** `source_reliability` - Wie viele Tage pro Woche darf ich im Homeoffice arbeiten? - answer cites low-reliability source(s): ['forum_rumors']
+- `rag_k3` **q11** `evidence_misinterpretation` - What is the notice period after the probation period ends? - contradicts retrieved evidence: ['During the probation period, either side may terminate the employment contract with a notice period of 4 weeks']
 - `rag_k3` **q12** `evidence_misinterpretation` - Within how many weeks must I challenge a termination at the labour court? - contradicts retrieved evidence: ['Employees who want to challenge a termination must file a claim with the labour court within 5 weeks (section 4 KSchG)']
-- `rag_k3` **q14** `evidence_misinterpretation, source_reliability` - Kann die Probezeit verlängert werden? - contradicts retrieved evidence: ['The probation period cannot be extended beyond 8 months, in line with section 622(3) of the German Civil Code (BGB)']; answer cites low-reliability source(s): ['forum_rumors']
+- `rag_k3` **q14** `source_reliability` - Kann die Probezeit verlängert werden? - answer cites low-reliability source(s): ['forum_rumors']
 - `rag_k3` **q16** `evidence_misinterpretation` - How many days can I work remotely from another EU country? - contradicts retrieved evidence: ['Employees may work remotely up to 5 days per week in agreement with their team']
 - `rag_k8_overload` **q02** `source_reliability` - What is the notice period during probation? - answer cites low-reliability source(s): ['forum_rumors']
 - `rag_k8_overload` **q04** `evidence_misinterpretation, context_overload` - Until when can unused vacation days be carried over? - contradicts retrieved evidence: ['Unused vacation days can be carried over to the next year and must be taken by 33 March']; context_tokens=208, gold_rank=0
 - `rag_k8_overload` **q05** `source_reliability` - Wie viele Tage pro Woche darf ich im Homeoffice arbeiten? - answer cites low-reliability source(s): ['forum_rumors']
-- `rag_k8_overload` **q12** `evidence_misinterpretation, context_overload` - Within how many weeks must I challenge a termination at the labour court? - contradicts retrieved evidence: ['Employees who want to challenge a termination must file a claim with the labour court within 5 weeks (section 4 KSchG)']; context_tokens=233, gold_rank=0
-- `rag_k8_overload` **q13** `context_overload` - How quickly does the AGG complaints office respond to a discrimination complaint? - context_tokens=225, gold_rank=0
+- `rag_k8_overload` **q08** `context_overload` - How long is applicant data stored after a rejection? - context_tokens=240, gold_rank=0

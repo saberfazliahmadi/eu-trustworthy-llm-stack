@@ -1,4 +1,6 @@
-# EU AI Act Compliance Mapping
+# EU AI Act Requirements Mapping (Engineering Self-Assessment)
+
+> **Disclaimer:** Educational & engineering reference prototype using a fictional employer (`ExampleHR Demo GmbH`) and synthetic data. Not legal advice, and not certified or approved for production use in high-risk HR decisions.
 
 Regulation (EU) 2024/1689 (Artificial Intelligence Act). This document maps each obligation relevant to this system
 to the concrete engineering artefact that implements or evidences it. It is an engineering self-assessment, not legal advice.
@@ -24,8 +26,9 @@ force on 1 August 2024 (Art. 113).
 | 2 December 2027 | High-risk obligations for stand-alone Annex III systems - **applies to this system** (Annex III 4(a)) |
 | 2 August 2028 | High-risk obligations for AI in products under Annex I harmonisation legislation |
 
-The Annex III and Annex I dates are those set by the Digital Omnibus on AI, which amended the original Art. 113 dates
-(2 August 2026 and 2 August 2027). Source: European Commission, AI Act Service Desk, *Timeline for the implementation of the EU AI Act*.
+The Annex III and Annex I dates (2 December 2027 / 2 August 2028) are those set by the Digital Omnibus on AI,
+Regulation (EU) 2026/1744 (OJ, 24 July 2026), which amended the original Art. 113 dates (2 August 2026 and
+2 August 2027). See also: European Commission, AI Act Service Desk, *Timeline for the implementation of the EU AI Act*.
 
 ## 2. Provider obligations for high-risk systems (Chapter III, Section 2)
 

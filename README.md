@@ -4,6 +4,8 @@
 ![Python 3.11 | 3.12](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+> **Disclaimer:** Educational & engineering reference prototype using a fictional employer (`ExampleHR Demo GmbH`) and synthetic data. Not legal advice, and not certified or approved for production use in high-risk HR decisions.
+
 ## What This Project Is (In Plain English)
 
 **Lotse** is an AI assistant for HR and careers in Germany. It answers questions about company HR policy and helps
@@ -18,6 +20,8 @@ about the assistant is backed by code you can run, an automated test, a written 
 ## Quick Visual Overview
 
 New to the repo? Watch the short walkthrough or scan the two infographics and slide deck below before diving into the code and audit reports.
+
+*(Overview visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against `reports/audit_summary.json`.)*
 
 https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
 
@@ -136,7 +140,7 @@ Today, all 7 gates pass.
 |---|---|---|---|
 | Attacks that get through the safety stack (attack success rate) | <= 0.10 | 0.029 | PASS |
 | Harmless questions wrongly refused (over-refusal) | <= 0.15 | 0.000 | PASS |
-| Share of answer facts backed by sources (grounded RAG FActScore) | >= 0.85 | 0.865 | PASS |
+| Share of answer facts backed by sources (grounded RAG FActScore) | >= 0.85 | 0.875 | PASS |
 | AI-judge outputs that cannot be read (parsing failures) | exactly 0 | 0 | PASS |
 | AI judge gives identical results on every run | 100 % identical | 100 % identical raw outputs | PASS |
 | No significant unfairness gap in deployed (blind) CV screening | not significant | z = 0.00 | PASS |
@@ -165,17 +169,17 @@ Today, all 7 gates pass.
 contradicts the source. An *extrinsic* hallucination adds something the source never said. **FActScore** is the share
 of an answer's single facts that the sources support.
 
-**What this means in plain English:** without documents, almost 9 in 10 facts were wrong. With documents, about 1 in 7
+**What this means in plain English:** without documents, almost 9 in 10 facts were wrong. With documents, about 1 in 8
 were wrong. But adding *more* documents (k = 8) made answers sound more faithful while getting more answers wrong.
 Being faithful to the text is not the same as being correct, so both must be measured.
 
 | Configuration | FActScore | Gold-fact accuracy | hit@k | Hallucinated facts |
 |---|---|---|---|---|
 | No-retrieval baseline (memory only) | 0.125 | 0.062 | - | 88.5 % (21 intrinsic, 2 extrinsic) |
-| RAG, k = 3 passages | 0.865 | 0.875 | 1.00 | 13.5 % |
-| RAG, k = 8 (too much context) | 0.906 | **0.750** | 1.00 | 8.3 % |
-| RAG, k = 3, questions with typos | 0.979 | 0.812 | **0.81** | 3.2 % |
-| RAG, k = 3, reliable sources only (deployed) | 0.865 | 0.875 | 1.00 | 13.5 % |
+| RAG, k = 3 passages | 0.875 | 0.875 | 1.00 | 12.8 % |
+| RAG, k = 8 (too much context) | 0.885 | **0.750** | 1.00 | 10.5 % |
+| RAG, k = 3, questions with typos | 0.979 | 0.812 | **0.81** | 3.1 % |
+| RAG, k = 3, reliable sources only (deployed) | 0.875 | 0.875 | 1.00 | 12.8 % |
 
 *Gold-fact accuracy* = the answer contains the correct fact. *hit@k* = the right document is among the k retrieved.
 
@@ -225,7 +229,7 @@ randomness, it broke often. And the two judges agreed with each other far more t
 | Accuracy vs. gold: A / B (borderline rows: 0.50 / 0.50) | Share graded correctly | 0.850 / 0.825 |
 | McNemar A vs. B | Is one judge significantly better? | b = 1, c = 0, p = 1.00 (exact): no |
 | Parsing failures, deterministic | Unreadable outputs, no randomness | 0 and 0 (identical raw outputs across runs) |
-| Parsing failures at T = 1.5 (3 seeds x 40 rows) | Unreadable outputs, high randomness | 17, 14, 13; label flip rate across seeds 0.52 |
+| Parsing failures at T = 1.5 (3 seeds x 40 rows) | Unreadable outputs, high randomness | 17, 15, 14; label flip rate across seeds 0.50 |
 | Disagreement Inspector | Rows worth a human look | 3 rows with >= 2-point A/B gap; **6 consensus errors** |
 
 A *consensus error* is a row where both judges agree with each other and both contradict the human label. Examples: a
@@ -285,7 +289,7 @@ finds the right document in almost every case.
 | clean | "What is the notice period during probation?" | 1.000 | 0.875 |
 | lexical typos | "What is the ntice period during probatoon?" | 0.938 | 0.688 |
 | semantic paraphrase | "termination notice time during probation" | 0.938 | 0.750 |
-| domain shift (legalese / chat style) | "hey quick q lol ..." | 1.000 | 0.938 |
+| domain shift (legalese / chat style) | "hey quick q lol ..." | 1.000 | 1.000 |
 | code-switching (English with German terms) | "What is the Kündigungsfrist during probation?" | 0.938 | 0.938 |
 
 **What this means in plain English:** a good average can hide inconsistency. The translator's average accuracy is 0.767,
@@ -336,7 +340,7 @@ oracle and the AI judge agreed only weakly (kappa 0.44). AI judges miss hijacks 
 ### 7. Decoding - [`reports/07_decoding.md`](reports/07_decoding.md)
 
 **What we tested:** *decoding* is how a model picks its next word. We trained a small bigram language model on the
-policy texts (held-out perplexity 219.8 vs. 293.8 for a simpler unigram model; lower is better).
+policy texts (held-out perplexity 220.9 vs. 294.9 for a simpler unigram model; lower is better).
 
 **What this means in plain English:** always picking the most likely word makes text loop. Pure randomness makes it
 varied but nonsensical. Limiting choices to the top 10 words is a good middle ground. For judges and safety checks, we
@@ -344,10 +348,10 @@ use no randomness at all.
 
 | Method | log p / token (higher = more likely) | distinct-2 (variety) | repetition |
 |---|---|---|---|
-| greedy | -2.404 | 0.127 | 0.52 (loops: "the probation period of the probation period ...") |
-| beam k = 5 | -2.383 | 0.132 | 0.65 |
-| sampling T = 1.0 | -5.574 | 1.000 | 0.01 |
-| sampling T = 1.0, top-k = 10 | -3.408 | 0.822 | 0.09 |
+| greedy | -2.348 | 0.127 | 0.52 (loops: "the probation period of the probation period ...") |
+| beam k = 5 | -2.342 | 0.158 | 0.625 |
+| sampling T = 1.0 | -5.637 | 0.993 | 0.015 |
+| sampling T = 1.0, top-k = 10 | -3.270 | 0.811 | 0.072 |
 
 ![Decoding](reports/figures/decoding.png)
 
@@ -433,6 +437,8 @@ eu-trustworthy-llm-stack/
 └── .github/workflows/     trust-gate.yml (Linux / Windows / macOS x Python 3.11 / 3.12)
 ```
 
+**Content note:** `data/safety_eval.csv` and `data/red_team_attacks.json` intentionally include synthetic examples of discriminatory, harassing and crisis prompts, strictly for safety-evaluation testing.
+
 ## Engineering Principles
 
 - **Reproducible:** seed 42 everywhere. All simulator randomness comes from SHA-256 hashes of the inputs. Raw judge
@@ -451,9 +457,26 @@ These documents give regulators, auditors and works councils the evidence a high
   known limitations.
 - [Data Statement](governance/DATA_STATEMENT.md): where the data comes from, which languages it covers, who labelled it
   and what is missing.
-- [EU AI Act Compliance Mapping](governance/EU_AI_ACT_COMPLIANCE.md): links each legal duty to concrete evidence in
+- [EU AI Act Requirements Mapping (Engineering Self-Assessment)](governance/EU_AI_ACT_COMPLIANCE.md): links each legal duty to concrete evidence in
   this repo. It covers the Annex III 4(a) classification, provider duties (Art. 9-15), deployer duties (Art. 26 / 50),
   GDPR Art. 22, the German equal-treatment law (AGG) and works-council rights (BetrVG sections 87 / 95).
+
+## References
+
+- Mitchell, M., et al. (2019). *Model Cards for Model Reporting*. Proceedings of FAT* 2019.
+- Bender, E. M., & Friedman, B. (2018). *Data Statements for Natural Language Processing: Toward Mitigating System
+  Bias and Enabling Better Science*. Transactions of the ACL, 6.
+- Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). *Semantics derived automatically from language corpora contain
+  human-like biases*. Science, 356(6334). (WEAT)
+- Min, S., et al. (2023). *FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text
+  Generation*. EMNLP 2023.
+- Inan, H., et al. (2023). *Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations*.
+  arXiv:2312.06674.
+- Shao, Z., et al. (2024). *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*
+  (introduces Group Relative Policy Optimization, GRPO). arXiv:2402.03300.
+- Bertrand, M., & Mullainathan, S. (2004). *Are Emily and Greg More Employable Than Lakisha and Jamal? A Field
+  Experiment on Labor Market Discrimination*. American Economic Review, 94(4).
+- Hines, K., et al. (2024). *Defending Against Indirect Prompt Injection Attacks With Spotlighting*. arXiv:2403.14720.
 
 ## License
 

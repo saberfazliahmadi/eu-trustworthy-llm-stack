@@ -1,13 +1,17 @@
 # Data Statement
 
+> **Disclaimer:** Educational & engineering reference prototype using a fictional employer (`ExampleHR Demo GmbH`) and synthetic data. Not legal advice, and not certified or approved for production use in high-risk HR decisions.
+
 Structure follows Bender & Friedman (2018), *Data Statements for NLP*, and supports the data-governance
 requirements of EU AI Act Art. 10.
 
 ## A. Curation rationale
 
 All datasets were written for this repository to exercise specific trustworthiness properties of an HR assistant
-for the German job market. **No real person's data is included.** The employer "Nordlicht Digital GmbH", all names,
+for the German job market. **No real person's data is included.** The employer "ExampleHR Demo GmbH", all names,
 CVs and e-mail addresses are fictional; the IBAN in test cases is the well-known public example IBAN.
+
+**Content note:** `data/safety_eval.csv` and `data/red_team_attacks.json` intentionally include synthetic examples of discriminatory, harassing and crisis prompts, strictly for safety-evaluation testing.
 
 | File | Size | Purpose |
 |---|---|---|

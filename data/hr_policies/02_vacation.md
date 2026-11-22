@@ -1,7 +1,7 @@
 ---
 doc_id: vacation
 title: Vacation Policy (Urlaub)
-source: Nordlicht Digital GmbH Employee Handbook, section 3.2
+source: ExampleHR Demo GmbH Employee Handbook, section 3.2
 reliability: high
 last_updated: 2026-01-15
 ---

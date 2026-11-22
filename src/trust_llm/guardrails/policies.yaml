@@ -1,4 +1,4 @@
-# Declarative guardrail policies for the Nordlicht Digital HR & career-coaching assistant.
+# Declarative guardrail policies for the ExampleHR Demo HR & career-coaching assistant.
 # Every rule MUST define: trigger, action, rationale.
 # Actions: REDACT | REDIRECT | REFUSE | ADD_DISCLAIMER | ESCALATE_TO_HUMAN
 # Trigger types: regex | keywords | guard_category | always
@@ -35,7 +35,7 @@ rules:
     stages: [output]
     trigger:
       type: regex
-      patterns: ['\b[A-Za-z0-9._%+-]+@(?!nordlicht-digital\.example)[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b']
+      patterns: ['\b[A-Za-z0-9._%+-]+@(?!example-hr\.example)[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b']
     action: REDACT
     params: {replacement: "[EMAIL_REDACTED]"}
     rationale: "Only official company contact addresses may be disclosed; any other e-mail in model output is treated as leaked personal data."

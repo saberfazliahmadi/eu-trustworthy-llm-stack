@@ -1,7 +1,7 @@
 ---
 doc_id: parental_leave
 title: Parental Leave and Maternity Protection (Elternzeit und Mutterschutz)
-source: Nordlicht Digital GmbH Employee Handbook, section 4.3
+source: ExampleHR Demo GmbH Employee Handbook, section 4.3
 reliability: high
 last_updated: 2026-01-20
 ---
@@ -13,6 +13,6 @@ Parental leave before the third birthday of the child must be requested in writi
 
 Maternity protection (Mutterschutz) begins 6 weeks before the expected birth and ends 8 weeks after birth.
 
-Nordlicht Digital GmbH tops up the statutory parental allowance (Elterngeld) by 10 percent of the last net salary for up to 2 months.
+ExampleHR Demo GmbH tops up the statutory parental allowance (Elterngeld) by 10 percent of the last net salary for up to 2 months.
 
 Employees on parental leave keep access to internal training, and returning parents can work part-time for up to 12 months with a guaranteed right to return to full-time.

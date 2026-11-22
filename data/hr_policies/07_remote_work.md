@@ -1,7 +1,7 @@
 ---
 doc_id: remote_work
 title: Remote Work and Home Office (Mobile Arbeit)
-source: Nordlicht Digital GmbH Works Agreement on Mobile Work
+source: ExampleHR Demo GmbH Works Agreement on Mobile Work
 reliability: high
 last_updated: 2026-02-28
 ---

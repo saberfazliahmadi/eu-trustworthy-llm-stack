@@ -1,5 +1,7 @@
 # Model Card - "Lotse" HR Policy & Career-Coaching Assistant
 
+> **Disclaimer:** Educational & engineering reference prototype using a fictional employer (`ExampleHR Demo GmbH`) and synthetic data. Not legal advice, and not certified or approved for production use in high-risk HR decisions.
+
 Format follows Mitchell et al. (2019), *Model Cards for Model Reporting*, extended with the system-level
 information required by EU AI Act Art. 11 / Annex IV. All numbers are produced by
 `python -m trust_llm.cli run-all` (seed 42) and are reproduced from `reports/audit_summary.json`.
@@ -15,7 +17,7 @@ information required by EU AI Act Art. 11 / Annex IV. All numbers are produced b
 | Guard | LlamaGuard-style prompt **and** response classification over an 8-category HR hazard taxonomy (heuristic backend by default, LLM backend via `GUARD_BACKEND=llm`) |
 | Policies | 14 declarative rules (`policies.yaml`), each with `trigger`, `action`, `rationale` |
 | Human oversight | `ESCALATE_TO_HUMAN` action -> HITL ticket queue (JSONL audit log) |
-| Developer / deployer | Portfolio reference implementation for a fictional employer (Nordlicht Digital GmbH) |
+| Developer / deployer | Portfolio reference implementation for a fictional employer (ExampleHR Demo GmbH) |
 
 ## 2. Intended use
 
@@ -36,9 +38,9 @@ information required by EU AI Act Art. 11 / Annex IV. All numbers are produced b
 
 | Dimension | Metric | Result |
 |---|---|---|
-| Grounding | FActScore - no-retrieval baseline -> grounded RAG (reliable sources) | 0.125 -> **0.865** |
+| Grounding | FActScore - no-retrieval baseline -> grounded RAG (reliable sources) | 0.125 -> **0.875** |
 | Grounding | Gold-fact accuracy - baseline -> grounded RAG | 0.062 -> **0.875** |
-| Grounding | Atomic facts hallucinated (intrinsic + extrinsic share) - baseline -> RAG | 0.885 -> 0.135 |
+| Grounding | Atomic facts hallucinated (intrinsic + extrinsic share) - baseline -> RAG | 0.885 -> 0.128 |
 | Security | Attack Success Rate, 34 attacks - raw model -> safety stack | 0.971 -> **0.029** (1 successful attack: A34, indirect CV injection quoted verbatim) |
 | Security | Majority-vote ASR (3 reviewers) - raw -> stack | 0.941 -> 0.029 |
 | Over-refusal | 12 benign controls refused by the stack | **0.000** |
@@ -51,7 +53,7 @@ information required by EU AI Act Art. 11 / Annex IV. All numbers are produced b
 | Robustness | Retrieval hit@3 under typos / paraphrase / domain shift / code-switching | 0.94 / 0.94 / 1.00 / 0.94 |
 | Evaluation | LLM-judge agreement (Spearman rho / thresholded kappa A-B) | 0.841 / 0.935 |
 | Evaluation | Deterministic judge parsing failures / reproducibility | 0 / 100 % identical |
-| Evaluation | Judge parsing failures at T = 1.5 (3 seeds, 40 rows each) | 17, 14, 13 |
+| Evaluation | Judge parsing failures at T = 1.5 (3 seeds, 40 rows each) | 17, 15, 14 |
 | Evaluation | Consensus errors (both judges agree, both wrong) | 6 of 40 rows |
 
 ## 5. Known limitations

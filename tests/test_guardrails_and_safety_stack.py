@@ -30,7 +30,7 @@ def test_rule_without_rationale_is_rejected():
 
 def test_redaction_and_disclaimer():
     engine = PolicyEngine()
-    d = engine.evaluate("My IBAN is DE89 3704 0044 0532 0130 00 and my phone 0151 23456789", "input")
+    d = engine.evaluate("My IBAN is DE89 3704 0044 0532 0130 00 and my phone 0151 00000000", "input")
     assert "DE89" not in d.text and "[IBAN_REDACTED]" in d.text and "[PHONE_REDACTED]" in d.text
     assert d.final_action == Action.REDACT
     out = engine.evaluate("The notice period after probation is 3 months.", "output")
