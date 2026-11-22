@@ -29,8 +29,7 @@ https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
 - **Architecture Infographic:** [5-Layer Safety Stack & Automated Safety Gates](docs/overview/Automated_Safety_Gates_Diagram.png)
 - **Benchmark Scorecard:** [Before vs. After & Residual Risks](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
 
-<details>
-<summary><strong>Click to expand the Architecture & Benchmark Infographics inline</strong></summary>
+<strong>The Architecture & Benchmark Infographics inline</strong>
 
 ### 5-Layer Safety Stack & Automated Safety Gates
 ![Automated Safety Gates Diagram](docs/overview/Automated_Safety_Gates_Diagram.png)
@@ -38,7 +37,7 @@ https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
 ### Before vs. After Benchmark Scorecard & Honest Findings
 ![LLM Trust Stack Performance Analysis](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
 
-</details>
+
 
 ---
 
