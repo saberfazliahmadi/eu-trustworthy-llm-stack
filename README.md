@@ -21,7 +21,7 @@ about the assistant is backed by code you can run, an automated test, a written 
 
 New to the repo? Watch the short walkthrough or scan the two infographics and slide deck below before diving into the code and audit reports.
 
-*(Overview visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against `reports/audit_summary.json`.)*
+*(Overview video, visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against `reports/audit_summary.json`.)*
 
 <p align="center">
   <strong>🎥▶ Watch this Project Video Overview to Understand it Easily & Quickly :)</strong>
@@ -468,7 +468,7 @@ These documents illustrate the kind of engineering documentation a high-risk sys
   this repo. It covers the Annex III 4(a) classification, provider duties (Art. 9-15), deployer duties (Art. 26 / 50),
   GDPR Art. 22, the German equal-treatment law (AGG) and works-council rights (BetrVG sections 87 / 95).
 
-## References(Overview video, visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against reports/audit_summary.json.)
+## References
 
 - Mitchell, M., et al. (2019). *Model Cards for Model Reporting*. Proceedings of FAT* 2019.
 - Bender, E. M., & Friedman, B. (2018). *Data Statements for Natural Language Processing: Toward Mitigating System
