@@ -32,7 +32,7 @@ Judge prompt has 4 parts: `### ROLE`, `### TASK`, `### OUTPUT SCHEMA`, `### INPU
 |---|---|
 | deterministic: identical raw outputs across 2 runs | 1.000 |
 | deterministic: parsing failures (2 runs) | 0 |
-| T=1.5: parsing failures per run (3 seeds) | [17, 15, 14] |
+| T=1.5: parsing failures per run (3 seeds) | [18, 14, 14] |
 | T=1.5: mean per-row score std | 0.652 |
 | T=1.5: label flip rate across seeds | 0.500 |
 

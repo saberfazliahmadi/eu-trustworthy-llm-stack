@@ -8,7 +8,7 @@
 
 ## What This Project Is (In Plain English)
 
-**Lotse** is an AI assistant for HR and careers in Germany. It answers questions about company HR policy and helps
+**ExampleHR Assistant** is a fictional AI assistant for HR and careers in Germany. It answers questions about company HR policy and helps
 people prepare for job applications and interviews.
 
 Under the **EU AI Act** (the European Union's law for artificial intelligence), AI used in hiring is legally
@@ -229,7 +229,7 @@ randomness, it broke often. And the two judges agreed with each other far more t
 | Accuracy vs. gold: A / B (borderline rows: 0.50 / 0.50) | Share graded correctly | 0.850 / 0.825 |
 | McNemar A vs. B | Is one judge significantly better? | b = 1, c = 0, p = 1.00 (exact): no |
 | Parsing failures, deterministic | Unreadable outputs, no randomness | 0 and 0 (identical raw outputs across runs) |
-| Parsing failures at T = 1.5 (3 seeds x 40 rows) | Unreadable outputs, high randomness | 17, 15, 14; label flip rate across seeds 0.50 |
+| Parsing failures at T = 1.5 (3 seeds x 40 rows) | Unreadable outputs, high randomness | 18, 14, 14; label flip rate across seeds 0.50 |
 | Disagreement Inspector | Rows worth a human look | 3 rows with >= 2-point A/B gap; **6 consensus errors** |
 
 A *consensus error* is a row where both judges agree with each other and both contradict the human label. Examples: a

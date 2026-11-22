@@ -1,4 +1,4 @@
-# Model Card - "Lotse" HR Policy & Career-Coaching Assistant
+# Model Card - "ExampleHR Assistant" HR Policy & Career-Coaching Assistant
 
 > **Disclaimer:** Educational & engineering reference prototype using a fictional employer (`ExampleHR Demo GmbH`) and synthetic data. Not legal advice, and not certified or approved for production use in high-risk HR decisions.
 
@@ -53,7 +53,7 @@ information required by EU AI Act Art. 11 / Annex IV. All numbers are produced b
 | Robustness | Retrieval hit@3 under typos / paraphrase / domain shift / code-switching | 0.94 / 0.94 / 1.00 / 0.94 |
 | Evaluation | LLM-judge agreement (Spearman rho / thresholded kappa A-B) | 0.841 / 0.935 |
 | Evaluation | Deterministic judge parsing failures / reproducibility | 0 / 100 % identical |
-| Evaluation | Judge parsing failures at T = 1.5 (3 seeds, 40 rows each) | 17, 15, 14 |
+| Evaluation | Judge parsing failures at T = 1.5 (3 seeds, 40 rows each) | 18, 14, 14 |
 | Evaluation | Consensus errors (both judges agree, both wrong) | 6 of 40 rows |
 
 ## 5. Known limitations
