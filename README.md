@@ -4,16 +4,34 @@
 ![Python 3.11 | 3.12](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-
-
-https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
-
-
-
 **A grounded, safety-stacked HR policy & career-coaching assistant for the German job market, plus the full engineering
 stack that makes it trustworthy: grounded RAG with fact verification, declarative guardrails, a 5-layer safety stack,
 statistical LLM-as-a-judge evaluation, fairness auditing and debiasing, metamorphic robustness testing, adversarial red teaming,
 mechanistic interpretability labs, CI trust gates and EU AI Act governance artefacts.**
+
+## Quick Visual Overview
+
+New to the repo? Watch the short walkthrough or scan the two infographics and slide deck below before diving into the code and audit reports.
+
+https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
+
+- **Slide Deck (10 slides):** [Download / View `Engineering_Trustworthy_HR_AI.pdf`](docs/overview/Engineering_Trustworthy_HR_AI.pdf)
+- **Architecture Infographic:** [5-Layer Safety Stack & Policy Flow](docs/overview/Five-Layer_AI_Trust_Framework.png)
+- **Benchmark Scorecard:** [Before vs. After & Residual Risks](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
+
+<details>
+<summary><strong>Click to expand the Architecture & Benchmark Infographics inline</strong></summary>
+
+### 5-Layer Safety Stack & Grounded RAG Architecture
+![5-Layer AI Trust Framework](docs/overview/Five-Layer_AI_Trust_Framework.png)
+
+### Before vs. After Benchmark Scorecard & Honest Findings
+![LLM Trust Stack Performance Analysis](docs/overview/LLM_Trust_Stack_Performance_Analysis.png)
+
+</details>
+
+
+
 
 Recruiting AI is explicitly *high-risk* under the EU AI Act (Annex III, point 4). This repository treats that literally:
 every claim about the assistant is backed by an executable audit, a test, a report and a figure.
