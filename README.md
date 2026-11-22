@@ -23,6 +23,14 @@ New to the repo? Watch the short walkthrough or scan the two infographics and sl
 
 *(Overview visuals and slide deck were AI-assisted from this repository's audit reports; every number is verified against `reports/audit_summary.json`.)*
 
+<p align="center">
+  <strong>🎥▶ Watch this Project Video Overview to Understand it Easily & Quickly :)</strong>
+</p>
+
+<p align="center">
+  🔊 <em>click the speaker icon on video player to unmute</em>
+</p>
+
 https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
 
 - **Slide Deck (10 slides):** [Download / View `EU_Trustworthy_HR_AI_Stack.pdf`](docs/overview/EU_Trustworthy_HR_AI_Stack.pdf)
