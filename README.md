@@ -31,7 +31,7 @@ New to the repo? Watch the short walkthrough or scan the two infographics and sl
   🔊 <em>click the speaker icon on video player to unmute</em>
 </p>
 
-https://github.com/user-attachments/assets/15e7bfe6-271f-4cbb-9d75-873154cb90c0
+https://github.com/user-attachments/assets/53a3a227-f549-410e-b01b-310d94c33e91
 
 - **Slide Deck (10 slides):** [Download / View `EU_Trustworthy_HR_AI_Stack.pdf`](docs/overview/EU_Trustworthy_HR_AI_Stack.pdf)
 - **Architecture Infographic:** [5-Layer Safety Stack & Automated Safety Gates](docs/overview/Automated_Safety_Gates_Diagram.png)
