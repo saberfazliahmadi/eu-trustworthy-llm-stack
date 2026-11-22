@@ -4,6 +4,12 @@
 ![Python 3.11 | 3.12](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+
+
+https://github.com/user-attachments/assets/3cad93b0-4484-4c9b-bae1-8f42e7699e13
+
+
+
 **A grounded, safety-stacked HR policy & career-coaching assistant for the German job market, plus the full engineering
 stack that makes it trustworthy: grounded RAG with fact verification, declarative guardrails, a 5-layer safety stack,
 statistical LLM-as-a-judge evaluation, fairness auditing and debiasing, metamorphic robustness testing, adversarial red teaming,
